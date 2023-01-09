@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SkillListView">
+
+    <TextView
+        android:id="@+id/skillnameandlvl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Push-ups Lvl: "
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        />
+
+    <ProgressBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:max="9"
+        android:id="@+id/progbar"
+        android:layout_below="@id/skillnameandlvl"
+        />
+
+    <TextView
+        android:id="@+id/exptxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Exp: "
+        android:textAlignment="center"
+        android:textSize="15sp"
+        android:layout_below="@id/progbar"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/addexpbtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Exp"
+        android:layout_below="@id/exptxt"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/rmvexpbtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Remove Exp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/addexpbtn"/>
+
+</RelativeLayout>
