@@ -24,19 +24,25 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         loadSkills();
 
-        skills.add(new Skill("Push-ups"));
-        skills.add(new Skill("Plank"));
-        skills.add(new Skill("Tri Push-up"));
+//        skills.add(new Skill("Push-ups"));
+//        skills.add(new Skill("Plank"));
+//        skills.add(new Skill("Tri Push-up"));
 
-        saveSkills(skills);
+        //saveSkills(skills);
 
 
         skillList = findViewById(R.id.listView);
         CustomBaseAdapter customBaseAdapter = new CustomBaseAdapter(getApplicationContext(), skills);
         skillList.setAdapter(customBaseAdapter);
 
+    }
+
+    public void deleteAllSkills() {
+        ArrayList<Skill> skills = new ArrayList<>();
+        saveSkills(skills);
     }
 
     public void saveSkills(ArrayList<Skill> skills) {

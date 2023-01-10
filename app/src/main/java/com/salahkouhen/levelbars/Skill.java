@@ -1,5 +1,9 @@
 package com.salahkouhen.levelbars;
 
+import android.content.SharedPreferences;
+
+import com.google.gson.Gson;
+
 public class Skill {
     private String skillName;
     private String skillDescription;

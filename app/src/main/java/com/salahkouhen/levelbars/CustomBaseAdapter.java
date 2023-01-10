@@ -26,6 +26,16 @@ public class CustomBaseAdapter extends BaseAdapter {
         inflater = LayoutInflater.from(context);
     }
 
+    public void saveSkills(ArrayList<Skill> skills) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("SharedPref",0); //since getSha.. is a method of context and subclasses (such as activity) but not view need to use context.
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(skills);
+        editor.putString("SkillList", json);
+        editor.apply();
+    }
+
+
     @Override
     public int getCount() {
         return skillList.size();
@@ -53,6 +63,7 @@ public class CustomBaseAdapter extends BaseAdapter {
 
         skillNameLvl.setText(skill.getSkillName() + " Lvl: " + skill.getLvl());
         expTxt.setText("Exp: " + skill.getExp());
+        progBar.setProgress(skill.getExp());
 
 
         addExp.setOnClickListener(new View.OnClickListener(){
@@ -66,6 +77,8 @@ public class CustomBaseAdapter extends BaseAdapter {
                 skillNameLvl.setText(skill.getSkillName() + " Lvl: " + skill.getLvl());
                 expTxt.setText("Exp: " + skill.getExp());
                 progBar.setProgress(skill.getExp());
+
+                saveSkills(skillList);
 
             }
         });
@@ -84,6 +97,8 @@ public class CustomBaseAdapter extends BaseAdapter {
                 skillNameLvl.setText(skill.getSkillName() + " Lvl: " + skill.getLvl());
                 expTxt.setText("Exp: " + skill.getExp());
                 progBar.setProgress(skill.getExp());
+
+                saveSkills(skillList);
             }
         });
 
