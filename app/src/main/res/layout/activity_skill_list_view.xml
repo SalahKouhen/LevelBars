@@ -52,4 +52,12 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@id/addexpbtn"/>
 
+    <Button
+        android:id="@+id/editbtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Edit Skill"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/rmvexpbtn"/>
+
 </RelativeLayout>

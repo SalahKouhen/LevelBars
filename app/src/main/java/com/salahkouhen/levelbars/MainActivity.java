@@ -2,6 +2,7 @@ package com.salahkouhen.levelbars;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -27,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         loadSkills();
+        SkillList.getInstance().setList(skills);
 
 //        skills.add(new Skill("Push-ups"));
 //        skills.add(new Skill("Plank"));
@@ -45,12 +46,18 @@ public class MainActivity extends AppCompatActivity {
         newSkillBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                skills.add(new Skill("New Skill"));
-                CustomBaseAdapter customBaseAdapter = new CustomBaseAdapter(getApplicationContext(), skills);
-                skillList.setAdapter(customBaseAdapter);
+//                skills.add(new Skill("New Skill"));
+//                CustomBaseAdapter customBaseAdapter = new CustomBaseAdapter(getApplicationContext(), skills);
+//                skillList.setAdapter(customBaseAdapter);
+                openSkillEdit();
             }
         });
 
+    }
+
+    public void openSkillEdit(){
+        Intent intent = new Intent(this,EditSkillActivity.class);
+        startActivity(intent);
     }
 
     public void deleteAllSkills() {

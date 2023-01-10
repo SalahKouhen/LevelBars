@@ -1,6 +1,7 @@
 package com.salahkouhen.levelbars;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,6 +36,13 @@ public class CustomBaseAdapter extends BaseAdapter {
         editor.apply();
     }
 
+    public void openSkillEdit(int i){
+        Intent intent = new Intent(this.context,EditSkillActivity.class);
+        intent.putExtra("SkillIndex", i);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
+    }
+
 
     @Override
     public int getCount() {
@@ -59,6 +67,7 @@ public class CustomBaseAdapter extends BaseAdapter {
         TextView expTxt = (TextView) view.findViewById(R.id.exptxt);
         Button addExp = (Button) view.findViewById(R.id.addexpbtn);
         Button minExp = (Button) view.findViewById(R.id.rmvexpbtn);
+        Button editSkill = (Button) view.findViewById(R.id.editbtn);
         Skill skill = skillList.get(i);
 
         skillNameLvl.setText(skill.getSkillName() + " Lvl: " + skill.getLvl());
@@ -99,6 +108,13 @@ public class CustomBaseAdapter extends BaseAdapter {
                 progBar.setProgress(skill.getExp());
 
                 saveSkills(skillList);
+            }
+        });
+
+        editSkill.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openSkillEdit(i);
             }
         });
 
