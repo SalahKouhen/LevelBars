@@ -1,6 +1,7 @@
 package com.salahkouhen.levelbars;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,8 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
@@ -51,6 +54,7 @@ public class CustomBaseAdapter extends BaseAdapter {
         skillNameLvl.setText(skill.getSkillName() + " Lvl: " + skill.getLvl());
         expTxt.setText("Exp: " + skill.getExp());
 
+
         addExp.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 skill.setExp(skill.getExp() + 1);
@@ -62,6 +66,7 @@ public class CustomBaseAdapter extends BaseAdapter {
                 skillNameLvl.setText(skill.getSkillName() + " Lvl: " + skill.getLvl());
                 expTxt.setText("Exp: " + skill.getExp());
                 progBar.setProgress(skill.getExp());
+
             }
         });
 
