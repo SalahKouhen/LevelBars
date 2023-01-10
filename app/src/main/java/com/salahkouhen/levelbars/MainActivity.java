@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -17,6 +19,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     private ListView skillList;
+    private FloatingActionButton newSkillBtn;
     ArrayList<Skill> skills;
 
     @Override
@@ -35,8 +38,18 @@ public class MainActivity extends AppCompatActivity {
 
 
         skillList = findViewById(R.id.listView);
+        newSkillBtn = findViewById(R.id.newSkillBtn);
         CustomBaseAdapter customBaseAdapter = new CustomBaseAdapter(getApplicationContext(), skills);
         skillList.setAdapter(customBaseAdapter);
+
+        newSkillBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                skills.add(new Skill("New Skill"));
+                CustomBaseAdapter customBaseAdapter = new CustomBaseAdapter(getApplicationContext(), skills);
+                skillList.setAdapter(customBaseAdapter);
+            }
+        });
 
     }
 
