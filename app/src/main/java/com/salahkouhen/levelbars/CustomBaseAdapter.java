@@ -46,8 +46,41 @@ public class CustomBaseAdapter extends BaseAdapter {
         TextView expTxt = (TextView) view.findViewById(R.id.exptxt);
         Button addExp = (Button) view.findViewById(R.id.addexpbtn);
         Button minExp = (Button) view.findViewById(R.id.rmvexpbtn);
+        Skill skill = skillList.get(i);
 
-        skillNameLvl.setText(skillList.get(i).getSkillName());
+        skillNameLvl.setText(skill.getSkillName() + " Lvl: " + skill.getLvl());
+        expTxt.setText("Exp: " + skill.getExp());
+
+        addExp.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                skill.setExp(skill.getExp() + 1);
+                if (skill.getExp() > 9){
+                    skill.setLvl(skill.getLvl() + 1);;
+                    skill.setExp(0);
+                }
+
+                skillNameLvl.setText(skill.getSkillName() + " Lvl: " + skill.getLvl());
+                expTxt.setText("Exp: " + skill.getExp());
+                progBar.setProgress(skill.getExp());
+            }
+        });
+
+        minExp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!(skill.getExp() < 1 && skill.getLvl() == 0)){
+                    skill.setExp(skill.getExp() - 1);
+                }
+                if (skill.getExp() < 0 && skill.getLvl() > 0){
+                    skill.setLvl(skill.getLvl() - 1);
+                    skill.setExp(9);
+                }
+
+                skillNameLvl.setText(skill.getSkillName() + " Lvl: " + skill.getLvl());
+                expTxt.setText("Exp: " + skill.getExp());
+                progBar.setProgress(skill.getExp());
+            }
+        });
 
         return view;
     }
