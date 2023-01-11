@@ -86,8 +86,8 @@
                 android:layout_below="@id/reqExp"
                 android:text="Save changes"
                 android:textSize="15dp"
-                android:textColor="@color/white"
-                android:background="@color/black"
+                android:textColor="@color/black"
+                android:background="@color/dark_gray"
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp"/>
 
@@ -98,8 +98,8 @@
                 android:layout_below="@id/saveBtn"
                 android:text="Cancel changes"
                 android:textSize="15dp"
-                android:textColor="@color/white"
-                android:background="@color/black"
+                android:textColor="@color/black"
+                android:background="@color/dark_gray"
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp"/>
 
@@ -109,9 +109,9 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/cnclBtn"
                 android:layout_marginTop="5dp"
-                android:background="@color/warningRed"
+                android:background="@color/dark_gray"
                 android:text="delete skill"
-                android:textColor="@color/white"
+                android:textColor="@color/warningRed"
                 android:textSize="15dp" />
         </RelativeLayout>
 
