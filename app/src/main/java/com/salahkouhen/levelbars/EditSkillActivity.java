@@ -19,8 +19,6 @@ public class EditSkillActivity extends AppCompatActivity {
         Intent intent = getIntent();
         int i = intent.getIntExtra("SkillIndex",0);
 
-        test = findViewById(R.id.skillnametest);
-        test.setText(SkillList.getInstance().getList().get(i).getSkillName());
 
     }
 }

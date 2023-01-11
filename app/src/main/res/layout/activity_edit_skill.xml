@@ -6,11 +6,115 @@
     android:layout_height="match_parent"
     tools:context=".EditSkillActivity">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/skillnametest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:layout_centerInParent="true"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/edtSkillName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:ems="10"
+                android:hint="Skill name"
+                android:inputType="textMultiLine"
+                android:layout_marginTop="50dp"/>
+
+            <EditText
+                android:id="@+id/edtSkillDesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textMultiLine"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/edtSkillName"
+                android:hint="What does it mean to level up?"
+
+                 />
+
+            <EditText
+                android:id="@+id/currentLevel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/edtSkillDesc"
+                android:hint="Current level"/>
+
+            <EditText
+                android:id="@+id/expDesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textMultiLine"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/currentLevel"
+                android:hint="What does it mean to gain 1 EXP point?"
+                />
+
+            <EditText
+                android:id="@+id/currentExp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/expDesc"
+                android:hint="Current EXP"
+                />
+
+            <EditText
+                android:id="@+id/reqExp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/currentExp"
+                android:hint="Required EXP to level up."
+                />
+
+            <Button
+                android:id="@+id/saveBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/reqExp"
+                android:text="Save changes"
+                android:textSize="15dp"
+                android:textColor="@color/white"
+                android:background="@color/black"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"/>
+
+            <Button
+                android:id="@+id/cnclBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/saveBtn"
+                android:text="Cancel changes"
+                android:textSize="15dp"
+                android:textColor="@color/white"
+                android:background="@color/black"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"/>
+
+            <Button
+                android:id="@+id/delBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/cnclBtn"
+                android:layout_marginTop="5dp"
+                android:background="@color/warningRed"
+                android:text="delete skill"
+                android:textColor="@color/white"
+                android:textSize="15dp" />
+        </RelativeLayout>
+
+    </ScrollView>
+
 </RelativeLayout>
