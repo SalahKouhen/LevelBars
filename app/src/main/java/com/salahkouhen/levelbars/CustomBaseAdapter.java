@@ -72,6 +72,7 @@ public class CustomBaseAdapter extends BaseAdapter {
 
         skillNameLvl.setText(skill.getSkillName() + " Lvl: " + skill.getLvl());
         expTxt.setText("Exp: " + skill.getExp());
+        progBar.setMax(skill.getExpToNxtLvl());
         progBar.setProgress(skill.getExp());
 
 
