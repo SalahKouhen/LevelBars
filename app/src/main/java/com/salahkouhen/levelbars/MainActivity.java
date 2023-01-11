@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //skills.add(new Skill("New Skill"));
 
-                openSkillEdit();
+                openSkillCreate();
             }
         });
 
@@ -61,11 +61,12 @@ public class MainActivity extends AppCompatActivity {
         skillList.setAdapter(customBaseAdapter);
     }
 
-    public void openSkillEdit(){
-        Intent intent = new Intent(this,EditSkillActivity.class);
+    public void openSkillCreate(){
+        Intent intent = new Intent(this,CreateSkillActivity.class);
         startActivity(intent);
     }
 
+    //used for editing purposes
     public void deleteAllSkills() {
         ArrayList<Skill> skills = new ArrayList<>();
         saveSkills();
