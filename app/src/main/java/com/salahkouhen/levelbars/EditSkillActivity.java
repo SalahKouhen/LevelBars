@@ -63,6 +63,7 @@ public class EditSkillActivity extends AppCompatActivity {
                 skill.setExpToNxtLvl(Integer.parseInt(reqExp.getText().toString()));
 
                 saveSkills();
+                finish();
             }
         });
 
