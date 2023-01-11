@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
 
     private ListView skillList;
     private FloatingActionButton newSkillBtn;
-    ArrayList<Skill> skills;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,30 +28,37 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         loadSkills();
-        SkillList.getInstance().setList(skills);
 
 //        skills.add(new Skill("Push-ups"));
 //        skills.add(new Skill("Plank"));
 //        skills.add(new Skill("Tri Push-up"));
-
-        //saveSkills(skills);
+//
+//        saveSkills(skills);
 
 
         skillList = findViewById(R.id.listView);
         newSkillBtn = findViewById(R.id.newSkillBtn);
-        CustomBaseAdapter customBaseAdapter = new CustomBaseAdapter(getApplicationContext(), skills);
+        CustomBaseAdapter customBaseAdapter = new CustomBaseAdapter(getApplicationContext(), SkillList.getInstance().getList());
         skillList.setAdapter(customBaseAdapter);
 
         newSkillBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                skills.add(new Skill("New Skill"));
-//                CustomBaseAdapter customBaseAdapter = new CustomBaseAdapter(getApplicationContext(), skills);
-//                skillList.setAdapter(customBaseAdapter);
+                //skills.add(new Skill("New Skill"));
+
                 openSkillEdit();
             }
         });
 
+
+    }
+
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        CustomBaseAdapter customBaseAdapter = new CustomBaseAdapter(getApplicationContext(), SkillList.getInstance().getList());
+        skillList.setAdapter(customBaseAdapter);
     }
 
     public void openSkillEdit(){
@@ -62,14 +68,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void deleteAllSkills() {
         ArrayList<Skill> skills = new ArrayList<>();
-        saveSkills(skills);
+        saveSkills();
     }
 
-    public void saveSkills(ArrayList<Skill> skills) {
+    public void saveSkills() {
         SharedPreferences sharedPreferences = getSharedPreferences("SharedPref",MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         Gson gson = new Gson();
-        String json = gson.toJson(skills);
+        String json = gson.toJson(SkillList.getInstance().getList());
         editor.putString("SkillList", json);
         editor.apply();
     }
@@ -79,13 +85,7 @@ public class MainActivity extends AppCompatActivity {
         Gson gson = new Gson();
         String json = sharedPreferences.getString("SkillList", null);
         Type type = new TypeToken<ArrayList<Skill>>() {}.getType();
-        skills = gson.fromJson(json, type);
-
-        if(skills == null){
-            Toast toast = Toast.makeText(getApplicationContext(),"Skill issue.",Toast.LENGTH_SHORT);
-            toast.show();
-            skills = new ArrayList<>();
-        }
+        SkillList.getInstance().setList(gson.fromJson(json, type));
 
     }
 }

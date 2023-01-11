@@ -7,10 +7,28 @@ import com.google.gson.Gson;
 public class Skill {
     private String skillName;
     private String skillDescription;
-    private int expToNxtLvl;
-    private int lvl;
-    private int exp;
+    private int expToNxtLvl = 10;
+    private int lvl = 0;
+    private int exp = 0;
     private String expDescription;
+
+    public void plsExp(){
+        this.exp++;
+        if (this.exp > this.expToNxtLvl-1){
+            this.lvl++;
+            this.exp = 0;
+        }
+    }
+
+    public void minExp(){
+        if (!(this.exp < 1 && this.lvl == 0)){
+            this.exp --;
+        }
+        if (this.exp < 0 && this.lvl > 0){
+            this.lvl --;
+            this.exp = this.expToNxtLvl-1;
+        }
+    }
 
     public Skill(String skillName) {
         this.skillName = skillName;
@@ -37,7 +55,11 @@ public class Skill {
     }
 
     public void setExpToNxtLvl(int expToNxtLvl) {
-        this.expToNxtLvl = expToNxtLvl;
+        if (expToNxtLvl < 1){
+            this.expToNxtLvl = 1;
+        }else {
+            this.expToNxtLvl = expToNxtLvl;
+        }
     }
 
     public int getLvl() {

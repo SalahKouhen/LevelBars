@@ -15,6 +15,7 @@
         android:textSize="30sp"
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
+        android:singleLine="false"
         />
 
     <ProgressBar

@@ -77,11 +77,7 @@ public class CustomBaseAdapter extends BaseAdapter {
 
         addExp.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                skill.setExp(skill.getExp() + 1);
-                if (skill.getExp() > 9){
-                    skill.setLvl(skill.getLvl() + 1);;
-                    skill.setExp(0);
-                }
+                skill.plsExp();
 
                 skillNameLvl.setText(skill.getSkillName() + " Lvl: " + skill.getLvl());
                 expTxt.setText("Exp: " + skill.getExp());
@@ -95,13 +91,7 @@ public class CustomBaseAdapter extends BaseAdapter {
         minExp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!(skill.getExp() < 1 && skill.getLvl() == 0)){
-                    skill.setExp(skill.getExp() - 1);
-                }
-                if (skill.getExp() < 0 && skill.getLvl() > 0){
-                    skill.setLvl(skill.getLvl() - 1);
-                    skill.setExp(9);
-                }
+                skill.minExp();
 
                 skillNameLvl.setText(skill.getSkillName() + " Lvl: " + skill.getLvl());
                 expTxt.setText("Exp: " + skill.getExp());
